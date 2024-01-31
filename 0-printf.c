@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 			}
 			else if (*format == 's')
 			{
-				str = va_arg(argDest, char *);
+				str = va_arg(argsDest, char *);
 				while (*str != '\0')
 				{
 					_putchar(*str);
