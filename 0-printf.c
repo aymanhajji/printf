@@ -1,7 +1,6 @@
-#include "main.h"
 #include <stdarg.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include "main.h"
 /**
  * _printf - return the number of characters printed
  * @format: pointer to character string
