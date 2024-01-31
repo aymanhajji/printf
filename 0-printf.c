@@ -20,10 +20,10 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
-			format++;    // I go to the character next to % like '%c' with this line I point to the 'c'
+			format++;
 			if (*format == 'c')
 			{
-				count++;   // Incrementing the counter when printing the character
+				count++;
 				_putchar(va_arg(argsDest, int));
 			}
 			else if (*format == 's')
@@ -32,8 +32,8 @@ int _printf(const char *format, ...)
 				while (*str != '\0')
 				{
 					_putchar(*str);
-					str++;     // Goes to the next character of the string
-					count++;   // We count the number of characters printed
+					str++;
+					count++;
 				}
 			}
 			else if (*format == '%')
