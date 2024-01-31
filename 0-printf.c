@@ -1,6 +1,7 @@
 #include "main.h"
 #include <stdarg.h>
 #include <stdlib.h>
+#include <stdio.hi>
 /**
  * _printf - return the number of characters printed
  * @format: pointer to character string
@@ -17,6 +18,7 @@ int _printf(const char *format, ...)
 
 	va_start(argsSrc, format);
 	va_copy(argsDest, argsSrc);
+	count = 0;
 	while (*format)
 	{
 		if (*format == '%')
@@ -25,22 +27,25 @@ int _printf(const char *format, ...)
 			if (*format == 'c')
 			{
 				count++;   // Incrementing the counter when printing the character
-				_putchar(va_arg(argsDest, char));
+				putchar(va_arg(argsDest, int));
 			}
 			if (*format == 's')
 			{
-				str = (char *)malloc(sizeof(va_arg(argDest, char *))*sizeof(char)); // Allocating memory for the string
+				str = va_arg(argDest, char *);
 				while (*str)
 				{
-					_putchar(*str);
+					putchar(*str);
 					str++;     // Goes to the next character of the string
 					count++;   // We count the number of characters printed
 				}
-				free(str); // Free memory when done using the string
 			}
 		}
+		else
+		{
+			count++;
+			putchar(*format);
+		}
 		format++;
-		count++;
 	}
 	va_end(argsDest);
 	va_end(argsSrc);
