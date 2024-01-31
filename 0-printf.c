@@ -11,15 +11,13 @@
  */
 int _printf(const char *format, ...)
 {
-	va_list argsSrc;
 	va_list argsDest;
 	char *str;
 	int count;
 
-	va_start(argsSrc, format);
-	va_copy(argsDest, argsSrc);
+	va_start(argsDest, format);
 	count = 0;
-	while (*format)
+	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
@@ -27,23 +25,28 @@ int _printf(const char *format, ...)
 			if (*format == 'c')
 			{
 				count++;   // Incrementing the counter when printing the character
-				putchar(va_arg(argsDest, int));
+				_putchar(va_arg(argsDest, int));
 			}
-			if (*format == 's')
+			else if (*format == 's')
 			{
 				str = va_arg(argDest, char *);
-				while (*str)
+				while (*str != '\0')
 				{
-					putchar(*str);
+					_putchar(*str);
 					str++;     // Goes to the next character of the string
 					count++;   // We count the number of characters printed
 				}
+			}
+			else if (*format == '%')
+			{
+				_putchar('%');
+				count++;
 			}
 		}
 		else
 		{
 			count++;
-			putchar(*format);
+			_putchar(*format);
 		}
 		format++;
 	}
