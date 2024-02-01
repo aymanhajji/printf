@@ -56,4 +56,3 @@ int _printf(const char *format, ...)
 	va_end(argsDest);
 	return (count);
 }
-
